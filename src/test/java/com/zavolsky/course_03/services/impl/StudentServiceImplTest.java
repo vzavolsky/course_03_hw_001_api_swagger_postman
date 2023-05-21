@@ -37,8 +37,11 @@ public class StudentServiceImplTest {
                 .isEqualTo(sizeBefore + 1);
     }
 
+
+
     @Test // This test doesn't work. Need to fix.
     public void getAllTest() {
+        int size = students.getAll().size();
         Assertions.assertThat(students.getAll())
                 .usingRecursiveComparison()
                 .comparingOnlyFields("name", "age")
@@ -53,11 +56,26 @@ public class StudentServiceImplTest {
                                 7, new Student("George Weasley", 15)
                         )
                 );
+
+        Assertions.assertThat(students.getAll().size())
+                .isEqualTo(size);
     }
 
     @Test
-    public void getAlByAge() {
+    public void getAllByAge() {
+        Assertions.assertThat(students.getAllByAge(13))
+                .usingRecursiveComparison()
+                .comparingOnlyFields("name", "age")
+                .isEqualTo(
+                        Map.of(
+                                1, new Student("Harry Potter", 13),
+                                2, new Student("Ronald Weasley", 13),
+                                3, new Student("Hermione Granger", 13)
+                        )
+                );
 
+        Assertions.assertThat(students.getAllByAge(13).size())
+                .isEqualTo(3);
     }
 
 }

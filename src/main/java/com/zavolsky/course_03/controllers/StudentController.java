@@ -5,6 +5,8 @@ import com.zavolsky.course_03.services.StudentService;
 import com.zavolsky.course_03.services.impl.StudentServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
+
+
 import java.util.Map;
 
 @RestController
@@ -17,7 +19,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public Student add(@RequestParam("name") String name, @RequestParam("age") int age) {
         return studentService.add(name, age);
     }

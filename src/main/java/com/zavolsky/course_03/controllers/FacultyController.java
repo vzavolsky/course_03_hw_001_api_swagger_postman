@@ -17,7 +17,7 @@ public class FacultyController {
         this.facultyService = facultyService;
     }
 
-    @GetMapping(path = "/add")
+    @PostMapping(path = "/add")
     public Faculty add(@RequestParam("name") String name, @RequestParam("color") String color) {
         return facultyService.add(name, color);
     }
